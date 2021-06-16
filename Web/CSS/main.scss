@@ -1,0 +1,217 @@
+// Fonts Poppins
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --pri-col: #ff2929;
+  --pri-col-low-op: hsla(0, 100%, 58%, 0.5);
+  --text: #444;
+  --white: #fff;
+}
+
+@mixin flex($just: center, $align: center) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  transition: 0.25s;
+  text-transform: capitalize;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+header {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(
+      to top left,
+      rgba(97, 4, 4, 0.384),
+      rgba(2, 2, 110, 0.315)
+    ),
+    url(../Backs/back2.jpg) center no-repeat;
+  background-size: cover;
+}
+nav {
+  @include flex(space-between, center);
+  padding: 0.8rem 1.2rem;
+  background: transparent;
+  ul {
+    display: flex;
+    list-style: none;
+    li {
+      @include flex(center);
+      a {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-left: 0.4rem;
+        color: #fff;
+        &:hover {
+          color: var(--pri-col);
+        }
+      }
+    }
+  }
+  .fa-bars {
+    font-size: 2rem;
+    display: none;
+    color: var(--white);
+    cursor: pointer;
+  }
+  .fa-times-circle {
+    transform: rotateY(180deg);
+    color: var(--white);
+  }
+}
+
+.color {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  @include flex(center);
+  flex-direction: column;
+  z-index: 10000;
+  .fa-angle-up {
+    font-size: 1.3rem;
+    cursor: pointer;
+    background-color: var(--pri-col);
+    color: var(--white);
+    padding: 1rem 1.3rem;
+    border-radius: 50%;
+    &:hover {
+      transform: translateY(-0.3rem);
+    }
+  }
+  .green,
+  .blue,
+  .purp,
+  .fa-sync-alt {
+    width: 1.1rem;
+    margin-bottom: 1.3rem;
+    height: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+.color-sec {
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: bottom;
+  div {
+    border: 2px solid var(--white);
+  }
+  div:nth-child(1) {
+    background-color: #2aff8a;
+  }
+  div:nth-child(2) {
+    background-color: #2a7fff;
+  }
+  div:nth-child(3) {
+    background-color: #ff145a;
+  }
+}
+
+.main {
+  div {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2.5rem;
+    text-align: center;
+    section {
+      width: 2.5rem;
+      height: 0.4rem;
+      background: var(--pri-col);
+    }
+    h2 {
+      font-size: 3rem;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    p {
+      color: var(--white);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    a {
+      padding: 0.9rem 2rem;
+      background: var(--pri-col);
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--white);
+      border-radius: 0 20px;
+    }
+  }
+  @include flex(center);
+
+  min-height: 80vh;
+}
+
+.sticky {
+  box-shadow: 0 3px 5px #4444448e;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: var(--white);
+  padding: 0.4rem 1.2rem;
+  ul {
+    li {
+      a {
+        color: var(--text);
+      }
+    }
+  }
+}
+
+.active {
+  transform: scaleY(1);
+  opacity: 100%;
+}
+// media
+@media (max-width: 768px) {
+  html {
+    font-size: 75%;
+  }
+  nav {
+    position: relative;
+    ul {
+      transform: scaleY(0);
+      transform-origin: top;
+      opacity: 0;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      flex-direction: column;
+      left: 0;
+      background: var(--white);
+      li {
+        a {
+          padding: 1.3rem;
+          width: 100%;
+          text-align: center;
+          margin: 0;
+          color: var(--text);
+        }
+      }
+    }
+    .fa-bars {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 60%;
+  }
+}
